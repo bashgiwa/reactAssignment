@@ -1,0 +1,47 @@
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.search {
+  float: right;
+  width: 360px;
+  height: 52px;
+}
+
+.search-title {  
+  width: 688px;
+  height: 77px;
+  font-size: 48px;
+}
+
+.sub-section{
+  width: 96%;
+  margin: auto;
+  padding: 5px 20px;
+  line-height: 60px;
+  margin-bottom: 60px;
+}
+
+.isChecked {
+  margin-left: 50px;
+  background: #0880ae;
+  width: 24px;
+  height: 24px;
+}
+
+.drop-down-header {
+  background: #fcfcfc;
+  height: 63px;
+  
+}
+
+.drop-down-title {
+  color: #2c2738;
+  line-height: 36.4px;
+}

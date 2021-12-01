@@ -1,0 +1,72 @@
+
+.header {
+    box-shadow: 0px 2px 4px rgba(44 39 56 0.0001), 0px 4px 8px rgba(44, 39, 56, 0.08);
+    border-radius: 8px;
+    margin-bottom: 60px;
+    display: flex;
+}
+
+.nav-bar {
+    flex: 1;
+    width: 95%;
+    background: yellow;
+    height: 140px;
+    padding: 5px 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+    right: 4.17%;
+}
+
+.logo {
+    flex: 1;
+    line-height: 140px;
+    padding: 5px 60px;
+}
+
+.shark-logo {
+    width: 60px;
+    height: 60px;
+}
+
+.title {
+    font-size: 28px;
+    line-height: 36px;
+    margin-left: 4%; 
+}
+
+.menu  li{
+    padding: 15px 5px;
+}
+
+.menu {
+   display: flex;
+   gap: 1em;
+   font-size: 20px;
+   line-height: 26px;
+}
+
+.menu li a{
+    color: #2c2738;
+}
+
+.menu a:hover {
+    color: #14a38b;
+}
+
+@media all and (max-width: 800px) {
+    .menu ul {
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .menu ul {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
