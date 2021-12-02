@@ -1,17 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DealsContext } from "../../context/AvailDealsContext";
+import { fakeAllDeals } from "./FakeData";
 
 import DealCard from "../DealCard/DealCard";
 import './AllDeals.css'
 
 const CHEAP_SHARK_URL = 'https://www.cheapshark.com/api/1.0/deals?';
 
-
-
-
 const AllDeals = () => {
-  const [context, contextData] = useState(undefined);
   const [loading, setLoading] = useState(false)
   const { dealData, setDealData } = useContext(DealsContext);
 
@@ -29,10 +26,11 @@ const AllDeals = () => {
   useEffect(() => {
     setLoading(true);
     getAllDeals();
+    //setDealData(fakeAllDeals)
   })
     
   return (
-      <div >
+      <div className="deal-view">
         <ul className='deal-items'> 
                 {(dealData || [])
                   .map((deal) => (

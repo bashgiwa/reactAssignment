@@ -1,15 +1,15 @@
 
 .header {
-    box-shadow: 0px 2px 4px rgba(44 39 56 0.0001), 0px 4px 8px rgba(44, 39, 56, 0.08);
+    box-shadow: 0px 2px 4px rgba(0,0,0,.2);
     border-radius: 8px;
     margin-bottom: 60px;
     display: flex;
 }
 
 .nav-bar {
-    flex: 1;
+    flex: 2;
     width: 95%;
-    background: yellow;
+    background: #ffffff;
     height: 140px;
     padding: 5px 60px;
     display: flex;
@@ -25,14 +25,15 @@
 }
 
 .shark-logo {
+    vertical-align: middle;
     width: 60px;
     height: 60px;
+    margin-right: 10%;
 }
 
 .title {
     font-size: 28px;
     line-height: 36px;
-    margin-left: 4%; 
 }
 
 .menu  li{

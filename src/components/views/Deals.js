@@ -2,11 +2,14 @@ import React, { useState, useContext} from "react";
 
 import { DealsContext } from "../../context/AvailDealsContext";
 import DealsContextProvider from "../../context/AvailDealsContext";
-
+import FilterOnSaleContextProvider from "../../context/FilterOnSaleContext";
 
 import AllDeals from "../AllDeals/AllDeals";
 import Search from "../Search/Search";
 import DealCheck from "../Search/SaleCheck";
+
+import './views.css';
+
 
 
 const Deals = () => {
@@ -16,11 +19,13 @@ const Deals = () => {
    // setDealData(contextData);
 
     return (
-        <div className="deals_page">
+        <div className="deals-page">
             <DealsContextProvider >
                 <Search/>
-                <DealCheck />
-                <AllDeals />
+                <FilterOnSaleContextProvider>
+                    <DealCheck />   
+                    <AllDeals />
+                </FilterOnSaleContextProvider>
             </DealsContextProvider>
         </div>
     )

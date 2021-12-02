@@ -1,17 +1,20 @@
 import React, { useState, useContext} from "react";
 import { DealsContext } from "../../context/AvailDealsContext";
+import { FilterOnSaleContext } from '../../context/FilterOnSaleContext';
 
 import './Search.css';
 
 const DealCheck = () => {
   const [isChecked, setIsChecked] = useState(false);
   const { dealData, setDealData } = useContext(DealsContext);
+  const { setSaleFlag } = useContext(FilterOnSaleContext);
 
   const handleOnChecked =() => {
     setIsChecked(!isChecked);
     if(!isChecked){
-      filterByOnSale();
+      filterByOnSale(); 
     }
+    setSaleFlag(!isChecked);
   }
 
   const filterByOnSale = () => {
@@ -29,12 +32,11 @@ const DealCheck = () => {
       <div className="sub-section">
         <span>On Sale</span>
         <input type="checkbox" className="isChecked"
-        id="filterByOnSale" 
-        name="filterByOnSale" 
-        value="On Sale"
-        checked={isChecked}
-        onChange={handleOnChecked}
-        ></input>
+          id="filterByOnSale" 
+          name="filterByOnSale" 
+          value="On Sale"
+          checked={isChecked}
+          onChange={handleOnChecked}></input>
       </div>
     </div>
 
