@@ -1,15 +1,12 @@
 
-import { useState, useContext} from 'react/cjs/react.development';
-import { FilterOnSaleContext } from '../../context/FilterOnSaleContext';
+import { useState } from 'react/cjs/react.development';
 import SalePrice from '../Details/SalePrice';
 import ViewMoreButton from '../More/ViewMoreButton';
 import './DealCard.css'
 
 const DealCard = ({deal}) => {
-    const{ dealID, title, desc , isOnSale, normalPrice, salePrice} = deal;
-    //const [showPrice, setShowPrice] = useState(isOnSale);
-    const {saleFlag} = useContext(FilterOnSaleContext);
-    
+    const{ dealID, title, metacriticScore , isOnSale, normalPrice, salePrice} = deal;
+    const [onSale, setOnSale] = useState(isOnSale);    
     return (
         <li>
             <div className="deal-card">
@@ -17,10 +14,10 @@ const DealCard = ({deal}) => {
                     <div className="card-title-child"> <span>{title}</span></div>
                 </div>
                 <div className="toggle">
-                    <div className= {`toggle-child ${saleFlag? "show": "hide"}`} >
+                    <div className= {`toggle-child ${onSale? "show": "hide"}`} >
                         <SalePrice retailPrice={normalPrice} price={salePrice}/>
                         </div>
-                    <div className= {`toggle-child ${saleFlag? "hide": "show"}`} ><span>{title}</span></div>  
+                    <div className= {`toggle-child ${onSale? "hide": "show"}`} ><span>{`Critics Score: ${metacriticScore}`}</span></div>  
                 </div>
                 <div className="btn"> 
                     <ViewMoreButton dealID={dealID} />

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DealsContext } from "../../context/AvailDealsContext";
 import { fakeAllDeals } from "./FakeData";
+import { getAllDeals } from "../../services/api/apiHandler";
 
 import DealCard from "../DealCard/DealCard";
 import './AllDeals.css'
@@ -12,21 +13,33 @@ const AllDeals = () => {
   const [loading, setLoading] = useState(false)
   const { dealData, setDealData } = useContext(DealsContext);
 
-  const getAllDeals = () => {
-    axios.get(CHEAP_SHARK_URL)
-    .then((response) => {
-       if(response.data.length > 0) {
-         setDealData(response.data)
-       };
-    })
-    .finally(() => setLoading(false))
-    .catch(e => console.error(`error: ${e}`))
+  // const getAnDeals = () => {
+  
+  //   axios(CHEAP_SHARK_URL)
+  //   .then((response) => {
+  //      if(response.data.length > 0) {
+  //        setDealData(response.data)
+  //      };
+  //   })
+  //   .finally(() => setLoading(false))
+  //   .catch(e => console.error(`error: ${e}`))
+  // }
+
+  const getDeals = () => {
+    getAllDeals()
+      .then((data) => {
+        if(data.length > 0) {
+          setDealData(data)
+        };
+      })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
     setLoading(true);
-    getAllDeals();
-    //setDealData(fakeAllDeals)
+    getDeals();
+    //getAllDeals();
+    setDealData(fakeAllDeals)
   })
     
   return (

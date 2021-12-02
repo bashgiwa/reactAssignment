@@ -4,9 +4,12 @@ import './Details.css'
 
 const formatCurrency = (string) => `$${string}`;
 
-const CheapestDeal = ({gameInfo, cheapestPrice})=> {
-  const {name, retailPrice, thumb } = gameInfo;
+const CheapestDeal = ({gameInfo, cheapestPrice, stores})=> {
+
+  const {name, retailPrice, thumb, storeID } = gameInfo;
   const {price} = cheapestPrice;
+
+  const store = stores.filter((store) => store.storeID === storeID);
   const savings = formatCurrency((parseFloat(retailPrice) - parseFloat(price)).toString());
   return (
     <div>
@@ -22,7 +25,7 @@ const CheapestDeal = ({gameInfo, cheapestPrice})=> {
           </li>
           <li>
             <div className="detail-header">
-              <span>Available at BT Games</span>
+              <span>{`Available at ${store[0]?.storeName}`}</span>
             </div>
           </li>
           <li>

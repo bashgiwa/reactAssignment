@@ -1,66 +1,85 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import axios from "axios";
 import MoreDeals from "../Details/MoreDeals";
 import CheapestDeal from "../Details/CheapestDeal";
+import { getSingleDeal } from "../../services/api/apiHandler";
+import { getAllStores } from "../../services/api/apiHandler";
 
 import '../Details/Details.css'
 
+//to be removed
 import { fakeSingleDeal } from "../AllDeals/FakeData";
 import { fakeAllStores } from "../AllDeals/FakeData";
 
-const CHEAP_SHARK_DEAL_URL = 'https://www.cheapshark.com/api/1.0/deals?id=';
-
-const transformStores = (cheaperStores, allStores) => {
-
-  let mapped = cheaperStores.map((store) => {
-    let storeInfo = allStores.filter((storeInfo) => storeInfo.storeID === store.storeID )
-    if(storeInfo) store.name = storeInfo[0].storeName;
-    return store;
-  })
-  return mapped;
-}
+const RESOURCE = 'deals?id=';
 
 const Details = () => {
   const { state } = useLocation();
-  // const { ID } = state;
-  // const detailUrl = `${CHEAP_SHARK_DEAL_URL}${ID}`; 
+  const { ID } = state;
 
   const [loading, setLoading] = useState(false);
   const [dealInfo, setDealInfo ] = useState(fakeSingleDeal);
-  const [storeInfo, setStoreInfo] = useState(fakeAllStores)
+  const [storeInfo, setStoreInfo ] = useState([]);
+  const [allStores, setAllStores ] = useState(fakeAllStores);
+ 
+  const { gameInfo, cheapestPrice, cheaperStores } = dealInfo;
 
-  let { gameInfo, cheapestPrice, cheaperStores } = dealInfo;
-  cheaperStores = transformStores(cheaperStores, storeInfo);
+  //setStoreData(fakeAllStores)
   
-  // setStoreInfo(fakeAllStores);
-  // setDealInfo(fakeSingleDeal);
+  const getDetail = () => {
+    setLoading(true);
+    getSingleDeal(RESOURCE, ID).then((response) => {
+      if(response) {
+        setDealInfo(response);
+      };
+    })
+    .finally(() => setLoading(false))
+  }
 
-  // const getDealDetails = () => {
-  //   axios.get(detailUrl)
-  //   .then((response) => {
-  //      if(response.data) {
-  //        setDealInfo(response.data);
-  //      };
-  //   })
-  //   .finally(() => setLoading(false))
-  //   .catch(e => console.error(`error: ${e}`))
-  // }
+  const getStores = () => {
+    setLoading(true);
+    getAllStores(RESOURCE).then((data) => {
+      if(data.length > 0) {
+        setAllStores(data);
+        updateStores(data);
+      };
+    })
+    .finally(() => setLoading(false))
+  }
+
+  const updateStores = (stores) => {
+    const updatedStores = transformStores(cheaperStores, stores);
+    setStoreInfo(updatedStores);
+  }
+
+  const transformStores = (cheaperStores, allStores) => {
+
+    let mapped = cheaperStores.map((store) => {
+      let storeInfo = allStores.filter((storeInfo) => storeInfo.storeID === store.storeID )
+      if(storeInfo) store.name = storeInfo[0].storeName;
+      return store;
+    })
+    return mapped;
+  }
+  
 
   useEffect(() => {
     //setLoading(true);
-    //getDealDetails();
-    
- 
+    //getDetail();
+    //getStores();  
+
+     //linse to be removed
+    setDealInfo(fakeSingleDeal);  
+    updateStores(fakeAllStores);
   })
   
   return (
       <div className="details">
           <div className="details-left">
-            <CheapestDeal gameInfo={gameInfo} cheapestPrice={cheapestPrice}/>
-          </div>
+            <CheapestDeal gameInfo={gameInfo} cheapestPrice={cheapestPrice} stores={allStores}/>
+          </div> 
           <div className="details-right">
-            <MoreDeals cheaperStores={cheaperStores} cheapestPrice={cheapestPrice}/>   
+              <MoreDeals cheaperStores={storeInfo} cheapestPrice={cheapestPrice}/>  
           </div>
       </div>
   )

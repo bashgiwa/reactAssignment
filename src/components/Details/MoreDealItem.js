@@ -5,6 +5,7 @@ import './Details.css'
 
 const MoreDealItem = ({store}) => {
   const{dealID, name, salePrice, retailPrice} = store;
+ 
   return (
       <li>
           <div className="more-deal-item">

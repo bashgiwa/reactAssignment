@@ -1,20 +1,17 @@
 import React, { useState, useContext} from "react";
 import { DealsContext } from "../../context/AvailDealsContext";
-import { FilterOnSaleContext } from '../../context/FilterOnSaleContext';
 
 import './Search.css';
 
 const DealCheck = () => {
   const [isChecked, setIsChecked] = useState(false);
   const { dealData, setDealData } = useContext(DealsContext);
-  const { setSaleFlag } = useContext(FilterOnSaleContext);
 
   const handleOnChecked =() => {
     setIsChecked(!isChecked);
     if(!isChecked){
       filterByOnSale(); 
     }
-    setSaleFlag(!isChecked);
   }
 
   const filterByOnSale = () => {
