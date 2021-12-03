@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import MoreDealItem from "./MoreDealItem";
 
 //remove fake data after fixing CORS
-import { fakeAllStores } from "../AllDeals/FakeData";
+//import { fakeAllStores } from "../AllDeals/FakeData";
 
 const RESOURCE = '/stores';
 

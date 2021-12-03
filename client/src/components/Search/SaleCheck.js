@@ -7,16 +7,16 @@ const DealCheck = () => {
   const [isChecked, setIsChecked] = useState(false);
   const { dealData, setDealData } = useContext(DealsContext);
 
+  const filterByOnSale = () => {
+    const saleItems = dealData.filter(deal => deal.isOnSale === "1")
+    if(saleItems.length > 0)setDealData(saleItems);
+  }
+
   const handleOnChecked =() => {
     setIsChecked(!isChecked);
     if(!isChecked){
       filterByOnSale(); 
     }
-  }
-
-  const filterByOnSale = () => {
-    const saleItems = dealData.filter(deal => deal.isOnSale === "1")
-    if(saleItems.length > 0)setDealData(saleItems);
   }
 
   return (

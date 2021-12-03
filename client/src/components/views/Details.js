@@ -7,53 +7,48 @@ import { getAllStores } from "../../services/api/apiHandler";
 
 import '../Details/Details.css'
 
-//to be removed
-import { fakeSingleDeal } from "../AllDeals/FakeData";
-import { fakeAllStores } from "../AllDeals/FakeData";
-
-const RESOURCE = 'deals?id=';
+//const DEAL_RESOURCE = 'deals?id=';
+const DEAL_RESOURCE = 'singledeal?';
+const STORES_RESOURCE = 'stores';
 
 const Details = () => {
   const { state } = useLocation();
   const { ID } = state;
-
-  const [loading, setLoading] = useState(false);
-  const [dealInfo, setDealInfo ] = useState(fakeSingleDeal);
+  const [loaded, setLoaded] = useState(false);
+  const [dealInfo, setDealInfo ] = useState({});
   const [storeInfo, setStoreInfo ] = useState([]);
-  const [allStores, setAllStores ] = useState(fakeAllStores);
+  const [allStores, setAllStores ] = useState([]);
  
   const { gameInfo, cheapestPrice, cheaperStores } = dealInfo;
-
-  //setStoreData(fakeAllStores)
   
   const getDetail = () => {
-    setLoading(true);
-    getSingleDeal(RESOURCE, ID).then((response) => {
+    getSingleDeal(DEAL_RESOURCE, ID)
+    .then((response) => {
       if(response) {
         setDealInfo(response);
       };
     })
-    .finally(() => setLoading(false))
+    .then(() => getStores())
+    .finally(() => setLoaded(true))
   }
 
   const getStores = () => {
-    setLoading(true);
-    getAllStores(RESOURCE).then((data) => {
+    getAllStores(STORES_RESOURCE).then((data) => {
       if(data.length > 0) {
-        setAllStores(data);
-        updateStores(data);
+        setAllStores(data); 
+        updateStores(data); 
       };
     })
-    .finally(() => setLoading(false))
   }
 
   const updateStores = (stores) => {
-    const updatedStores = transformStores(cheaperStores, stores);
-    setStoreInfo(updatedStores);
+    if(stores && cheaperStores) {
+      const updatedStores = mapStoreIDToName(cheaperStores, stores);
+      setStoreInfo(updatedStores);
+    }
   }
 
-  const transformStores = (cheaperStores, allStores) => {
-
+  const mapStoreIDToName = (cheaperStores, allStores) => {
     let mapped = cheaperStores.map((store) => {
       let storeInfo = allStores.filter((storeInfo) => storeInfo.storeID === store.storeID )
       if(storeInfo) store.name = storeInfo[0].storeName;
@@ -62,15 +57,10 @@ const Details = () => {
     return mapped;
   }
   
-
   useEffect(() => {
-    //setLoading(true);
-    //getDetail();
-    //getStores();  
-
-     //linse to be removed
-    setDealInfo(fakeSingleDeal);  
-    updateStores(fakeAllStores);
+    if(!loaded) {
+      getDetail(); 
+    }
   })
   
   return (

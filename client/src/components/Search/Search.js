@@ -24,7 +24,7 @@ const SearchBar = () => {
   return (
     <div className="sub-section">
       <span className="search-title">Deals</span>
-      <input type="text" className="search" placeholder="Search deals by name" onChange={(e) => searchByTitle(e.target.value)} />
+      <input type="text" className="search" placeholder="  Search deals by name" onChange={(e) => searchByTitle(e.target.value)} />
     </div>
   )
 }

@@ -6,8 +6,8 @@ const formatCurrency = (string) => `$${string}`;
 
 const CheapestDeal = ({gameInfo, cheapestPrice, stores})=> {
 
-  const {name, retailPrice, thumb, storeID } = gameInfo;
-  const {price} = cheapestPrice;
+  const {name, retailPrice, thumb, storeID } = {...gameInfo};
+  const {price} = {...cheapestPrice};
 
   const store = stores.filter((store) => store.storeID === storeID);
   const savings = formatCurrency((parseFloat(retailPrice) - parseFloat(price)).toString());

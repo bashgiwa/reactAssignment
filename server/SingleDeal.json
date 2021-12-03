@@ -1,0 +1,55 @@
+{
+  "gameInfo": {
+    "storeID": "1",
+    "gameID": "93503",
+    "name": "BioShock Infinite",
+    "steamAppID": "8870",
+    "salePrice": "29.99",
+    "retailPrice": "29.99",
+    "steamRatingText": "Overwhelmingly Positive",
+    "steamRatingPercent": "95",
+    "steamRatingCount": "88340",
+    "metacriticScore": "94",
+    "metacriticLink": "\/game\/pc\/bioshock-infinite",
+    "releaseDate": 1364169600,
+    "publisher": "N\/A",
+    "steamworks": "1",
+    "thumb": "https:\/\/cdn.cloudflare.steamstatic.com\/steam\/apps\/8870\/capsule_sm_120.jpg?t=1602794480"
+  },
+  "cheaperStores": [
+    {
+      "dealID": "e%2FE%2FHQfd0RiMBE%2FRh%2Fm9606KlgVCh7qxzZ4zCry9sW4%3D",
+      "storeID": "11",
+      "salePrice": "7.49",
+      "retailPrice": "29.99"
+    },
+    {
+      "dealID": "vb3EqB4KpKbSyV83DXQYAZCSBS60LaOMgLCXSt8pQxw%3D",
+      "storeID": "23",
+      "salePrice": "24.59",
+      "retailPrice": "29.99"
+    },
+    {
+      "dealID": "1nxs40EdXRwN9m%2F1QnlLBnkKzR3t%2FWWpcDR7sD3zmNk%3D",
+      "storeID": "24",
+      "salePrice": "25.49",
+      "retailPrice": "29.99"
+    },
+    {
+      "dealID": "fq0cNHiR3Z4TpZyV7WH865C1%2BCBlmufYUc%2Bu2HqyUHE%3D",
+      "storeID": "27",
+      "salePrice": "26.99",
+      "retailPrice": "29.99"
+    },
+    {
+      "dealID": "hReosKFOXQFSj1Mh2U7pTV%2F8PBhsSPup0WZQiEvOT5A%3D",
+      "storeID": "33",
+      "salePrice": "28.49",
+      "retailPrice": "29.99"
+    }
+  ],
+  "cheapestPrice": {
+    "price": "5.27",
+    "date": 1543553226
+  }
+}
