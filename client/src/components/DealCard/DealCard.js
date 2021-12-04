@@ -11,11 +11,11 @@ const DealCard = ({deal}) => {
         <li>
             <div className="deal-card">
                 <div className="card-title">
-                    <div className="card-title-child"> <span>{title}</span></div>
+                    <div className="card-title-child"> <span placeholder="dealTitle">{title}</span></div>
                 </div>
                 <div className="toggle">
-                    <div className= {`toggle-child ${onSale? "show": "hide"}`} >
-                        <SalePrice retailPrice={normalPrice} price={salePrice}/>
+                    <div className="toggle-child">
+                        <SalePrice retailPrice={normalPrice} price={salePrice} onSale={onSale}/>
                         </div>
                     <div className= {`toggle-child ${onSale? "hide": "show"}`} ><span>{`Critics Score: ${metacriticScore}`}</span></div>  
                 </div>

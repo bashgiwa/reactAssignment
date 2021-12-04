@@ -19,7 +19,7 @@ const CheapestDeal = ({gameInfo, cheapestPrice, stores})=> {
           </li>
           <li>
             <div className="price-view">
-              <SalePrice retailPrice={retailPrice} price={price}/>
+              <SalePrice retailPrice={retailPrice} price={price} onSale={""}/>
               <div className="savings"><span className="saved" >{savings}</span></div> 
             </div>
           </li>

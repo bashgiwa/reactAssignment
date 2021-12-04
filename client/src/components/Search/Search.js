@@ -7,9 +7,8 @@ const SearchBar = () => {
   
   const {dealData, setDealData} = useContext(DealsContext);
   const [load, setLoad] = useState(false);
- const [ searches, setSearches ] = useState( dealData);
+  const [ searches, setSearches ] = useState( dealData);
 
-  
   const searchByTitle = (query) => {
     const matches = [];
       if(query === "" ){
@@ -26,11 +25,14 @@ const SearchBar = () => {
   }
 
   useEffect(() => {
-    if(!load && dealData.length > 0) {
-      setSearches([...dealData]);
-      setLoad(true);
+    const initSearch = () =>{
+      if(!load && dealData && dealData.length > 0) {
+        setSearches([...dealData]);
+        setLoad(true);
+      }
     }
-  })
+    initSearch()
+  } , [load, dealData])
 
   return (
     <div className="sub-section">

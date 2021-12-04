@@ -108,3 +108,11 @@
   flex: 1;
   align-content: center;
 }
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
