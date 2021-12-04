@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { handleResponse, handleError } from './response';
 
-const BASE_URL = '';
 const API_URL = "/api" ;
 
 export const getAllDeals = (resource) => {

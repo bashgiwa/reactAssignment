@@ -14,7 +14,7 @@ const PORT = 5000;
 const HOST= "localhost";
 const API_URL = "https://www.cheapshark.com/api/1.0" ;
 
-const RANDOM_URL = "https://randomuser.me/api";
+const RANDOM_URL = "https://randomuser.me";
 
 app.use(morgan('dev'));
 
@@ -41,10 +41,7 @@ app.get('/api/stores', (req, res) => {
 // app.use('/api', 
 //   createProxyMiddleware( { 
 //     target: API_URL, 
-//     changeOrigin :  true,
-//     pathRewrite: {
-//       [`^/api`]: '',
-//     },
+//     changeOrigin :  true
 // }));
 
 app.use('', (req, res, next) => {

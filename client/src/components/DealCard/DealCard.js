@@ -6,7 +6,7 @@ import './DealCard.css'
 
 const DealCard = ({deal}) => {
     const{ dealID, title, metacriticScore , isOnSale, normalPrice, salePrice} = deal;
-    const [onSale, setOnSale] = useState(isOnSale);    
+    const [onSale ] = useState(isOnSale);    
     return (
         <li>
             <div className="deal-card">

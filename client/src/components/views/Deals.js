@@ -1,5 +1,4 @@
 
-import { DealsContext } from "../../context/AvailDealsContext";
 import DealsContextProvider from "../../context/AvailDealsContext";
 
 import AllDeals from "../AllDeals/AllDeals";
